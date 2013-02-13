@@ -1,0 +1,103 @@
+<%@ page import="org.isima.sof.Question" %>
+
+
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'answers', 'error')} ">
+	<label for="answers">
+		<g:message code="question.answers.label" default="Answers" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${questionInstance?.answers?}" var="a">
+    <li><g:link controller="answer" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="answer" action="create" params="['question.id': questionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'answer.label', default: 'Answer')])}</g:link>
+</li>
+</ul>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'comments', 'error')} ">
+	<label for="comments">
+		<g:message code="question.comments.label" default="Comments" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${questionInstance?.comments?}" var="c">
+    <li><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="comment" action="create" params="['question.id': questionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'comment.label', default: 'Comment')])}</g:link>
+</li>
+</ul>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'creationDate', 'error')} required">
+	<label for="creationDate">
+		<g:message code="question.creationDate.label" default="Creation Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="creationDate" precision="day"  value="${questionInstance?.creationDate}"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="question.description.label" default="Description" />
+		
+	</label>
+	<g:textField name="description" value="${questionInstance?.description}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'tags', 'error')} ">
+	<label for="tags">
+		<g:message code="question.tags.label" default="Tags" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${questionInstance?.tags?}" var="t">
+    <li><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="tag" action="create" params="['question.id': questionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'tag.label', default: 'Tag')])}</g:link>
+</li>
+</ul>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'titre', 'error')} ">
+	<label for="titre">
+		<g:message code="question.titre.label" default="Titre" />
+		
+	</label>
+	<g:textField name="titre" value="${questionInstance?.titre}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="question.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${org.isima.sof.User.list()}" optionKey="id" required="" value="${questionInstance?.user?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'viewsNb', 'error')} required">
+	<label for="viewsNb">
+		<g:message code="question.viewsNb.label" default="Views Nb" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="viewsNb" type="number" value="${questionInstance.viewsNb}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'votesNb', 'error')} required">
+	<label for="votesNb">
+		<g:message code="question.votesNb.label" default="Votes Nb" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="votesNb" type="number" value="${questionInstance.votesNb}" required=""/>
+</div>
+
