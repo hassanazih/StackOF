@@ -60,17 +60,23 @@
   <body>
 
     <div class="container">
-
-      <form class="form-signin" action="login">
+	<g:if test="${session.user}">
+		hello baby
+	</g:if>
+    <g:else>
+      <form class="form-signin" controller="Login" action="authenticate" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" name="user.username" class="input-block-level" placeholder="User name">
-        <input type="password" name="user.password" class="input-block-level" placeholder="Password">
+        <g:if test="${flash.message}">
+        <div class="message">${flash.message}</div>
+      	</g:if>
+        <input type="text" name="username" class="input-block-level" placeholder="User name">
+        <input type="password" name="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-large btn-primary" type="submit" >Sign in</button>
       </form>
-
+	</g:else>
     </div> <!-- /container -->
 
     <!-- Le javascript

@@ -24,17 +24,17 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="admin" title="${message(code: 'user.admin.label', default: 'Admin')}" />
+						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="avatar" title="${message(code: 'user.avatar.label', default: 'Avatar')}" />
+						<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
 					
-						<g:sortableColumn property="birthday" title="${message(code: 'user.birthday.label', default: 'Birthday')}" />
+						<g:sortableColumn property="profileViews" title="${message(code: 'user.profileViews.label', default: 'Profile Views')}" />
+					
+						<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="inscriptionDate" title="${message(code: 'user.inscriptionDate.label', default: 'Inscription Date')}" />
-					
-						<g:sortableColumn property="location" title="${message(code: 'user.location.label', default: 'Location')}" />
+						<g:sortableColumn property="admin" title="${message(code: 'user.admin.label', default: 'Admin')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "admin")}</g:link></td>
+						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: userInstance, field: "avatar")}</td>
+						<td>${fieldValue(bean: userInstance, field: "password")}</td>
 					
-						<td><g:formatDate date="${userInstance.birthday}" /></td>
+						<td>${fieldValue(bean: userInstance, field: "profileViews")}</td>
+					
+						<td>${fieldValue(bean: userInstance, field: "website")}</td>
 					
 						<td>${fieldValue(bean: userInstance, field: "email")}</td>
 					
-						<td><g:formatDate date="${userInstance.inscriptionDate}" /></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "location")}</td>
+						<td><g:formatBoolean boolean="${userInstance.admin}" /></td>
 					
 					</tr>
 				</g:each>

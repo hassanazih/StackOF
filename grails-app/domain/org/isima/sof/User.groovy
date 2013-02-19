@@ -17,5 +17,21 @@ class User {
 	
 	static hasMany = [badges:Badge, answers:Answer, questions:Question, comments:Comment];
     static constraints = {
+		username(unique : true,nullable : false,blank:false)
+		password(password : true,nullable : false,blank:false)
+		answers(nullable : true)
+		badges(nullable : true)
+		questions(nullable : true)
+		comments(nullable : true)
+		profileViews(nullable : true)
+		website(nullable : true)
+		email(nullable : false,blank:false, email:true)
+		
+		
     }
+	
+	String toString()
+	{
+		name
+	}
 }

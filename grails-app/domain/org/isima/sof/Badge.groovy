@@ -5,5 +5,6 @@ class Badge {
 	
 	static belongsTo= [user:User];
     static constraints = {
+		type(nullable : false,blank:false)
     }
 }

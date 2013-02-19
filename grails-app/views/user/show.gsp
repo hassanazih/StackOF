@@ -23,11 +23,20 @@
 			</g:if>
 			<ol class="property-list user">
 			
-				<g:if test="${userInstance?.admin}">
+				<g:if test="${userInstance?.username}">
 				<li class="fieldcontain">
-					<span id="admin-label" class="property-label"><g:message code="user.admin.label" default="Admin" /></span>
+					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
 					
-						<span class="property-value" aria-labelledby="admin-label"><g:formatBoolean boolean="${userInstance?.admin}" /></span>
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.password}">
+				<li class="fieldcontain">
+					<span id="password-label" class="property-label"><g:message code="user.password.label" default="Password" /></span>
+					
+						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${userInstance}" field="password"/></span>
 					
 				</li>
 				</g:if>
@@ -43,15 +52,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.avatar}">
-				<li class="fieldcontain">
-					<span id="avatar-label" class="property-label"><g:message code="user.avatar.label" default="Avatar" /></span>
-					
-						<span class="property-value" aria-labelledby="avatar-label"><g:fieldValue bean="${userInstance}" field="avatar"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${userInstance?.badges}">
 				<li class="fieldcontain">
 					<span id="badges-label" class="property-label"><g:message code="user.badges.label" default="Badges" /></span>
@@ -63,11 +63,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.birthday}">
+				<g:if test="${userInstance?.questions}">
 				<li class="fieldcontain">
-					<span id="birthday-label" class="property-label"><g:message code="user.birthday.label" default="Birthday" /></span>
+					<span id="questions-label" class="property-label"><g:message code="user.questions.label" default="Questions" /></span>
 					
-						<span class="property-value" aria-labelledby="birthday-label"><g:formatDate date="${userInstance?.birthday}" /></span>
+						<g:each in="${userInstance.questions}" var="q">
+						<span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -83,11 +85,56 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.profileViews}">
+				<li class="fieldcontain">
+					<span id="profileViews-label" class="property-label"><g:message code="user.profileViews.label" default="Profile Views" /></span>
+					
+						<span class="property-value" aria-labelledby="profileViews-label"><g:fieldValue bean="${userInstance}" field="profileViews"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.website}">
+				<li class="fieldcontain">
+					<span id="website-label" class="property-label"><g:message code="user.website.label" default="Website" /></span>
+					
+						<span class="property-value" aria-labelledby="website-label"><g:fieldValue bean="${userInstance}" field="website"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.email}">
 				<li class="fieldcontain">
 					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
 					
 						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.admin}">
+				<li class="fieldcontain">
+					<span id="admin-label" class="property-label"><g:message code="user.admin.label" default="Admin" /></span>
+					
+						<span class="property-value" aria-labelledby="admin-label"><g:formatBoolean boolean="${userInstance?.admin}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.avatar}">
+				<li class="fieldcontain">
+					<span id="avatar-label" class="property-label"><g:message code="user.avatar.label" default="Avatar" /></span>
+					
+						<span class="property-value" aria-labelledby="avatar-label"><g:fieldValue bean="${userInstance}" field="avatar"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.birthday}">
+				<li class="fieldcontain">
+					<span id="birthday-label" class="property-label"><g:message code="user.birthday.label" default="Birthday" /></span>
+					
+						<span class="property-value" aria-labelledby="birthday-label"><g:formatDate date="${userInstance?.birthday}" /></span>
 					
 				</li>
 				</g:if>
@@ -119,58 +166,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="user.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${userInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.profileViews}">
-				<li class="fieldcontain">
-					<span id="profileViews-label" class="property-label"><g:message code="user.profileViews.label" default="Profile Views" /></span>
-					
-						<span class="property-value" aria-labelledby="profileViews-label"><g:fieldValue bean="${userInstance}" field="profileViews"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.questions}">
-				<li class="fieldcontain">
-					<span id="questions-label" class="property-label"><g:message code="user.questions.label" default="Questions" /></span>
-					
-						<g:each in="${userInstance.questions}" var="q">
-						<span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${userInstance?.reputationScore}">
 				<li class="fieldcontain">
 					<span id="reputationScore-label" class="property-label"><g:message code="user.reputationScore.label" default="Reputation Score" /></span>
 					
 						<span class="property-value" aria-labelledby="reputationScore-label"><g:fieldValue bean="${userInstance}" field="reputationScore"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.username}">
-				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
-					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.website}">
-				<li class="fieldcontain">
-					<span id="website-label" class="property-label"><g:message code="user.website.label" default="Website" /></span>
-					
-						<span class="property-value" aria-labelledby="website-label"><g:fieldValue bean="${userInstance}" field="website"/></span>
 					
 				</li>
 				</g:if>

@@ -6,5 +6,6 @@ class Tag {
 	
 	static belongsTo = [question:Question];
     static constraints = {
+		name(nullable : false,blank:false)
     }
 }

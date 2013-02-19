@@ -8,5 +8,7 @@ class Comment {
 	
 	static belongsTo = [question:Question, user:User, answer:Answer];
     static constraints = {
+		creationDate(nullable : false,blank:false)
+		description(nullable : false,blank:false)
     }
 }
