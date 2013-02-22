@@ -1,4 +1,8 @@
 package org.isima.sof
+import grails.plugins.springsecurity.Secured;
+
+
+import org.springframework.dao.DataIntegrityViolationException
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -15,10 +19,12 @@ class TagController {
         [tagInstanceList: Tag.list(params), tagInstanceTotal: Tag.count()]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def create() {
         [tagInstance: new Tag(params)]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def save() {
         def tagInstance = new Tag(params)
         if (!tagInstance.save(flush: true)) {
@@ -41,6 +47,7 @@ class TagController {
         [tagInstance: tagInstance]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def tagInstance = Tag.get(id)
         if (!tagInstance) {
@@ -52,6 +59,7 @@ class TagController {
         [tagInstance: tagInstance]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def tagInstance = Tag.get(id)
         if (!tagInstance) {
@@ -81,6 +89,7 @@ class TagController {
         redirect(action: "show", id: tagInstance.id)
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def tagInstance = Tag.get(id)
         if (!tagInstance) {

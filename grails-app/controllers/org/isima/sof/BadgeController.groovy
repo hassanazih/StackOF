@@ -1,4 +1,9 @@
 package org.isima.sof
+import grails.plugins.springsecurity.Secured;
+
+
+import org.springframework.dao.DataIntegrityViolationException
+
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -9,16 +14,18 @@ class BadgeController {
     def index() {
         redirect(action: "list", params: params)
     }
-
+	
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [badgeInstanceList: Badge.list(params), badgeInstanceTotal: Badge.count()]
     }
-
+	
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def create() {
         [badgeInstance: new Badge(params)]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def save() {
         def badgeInstance = new Badge(params)
         if (!badgeInstance.save(flush: true)) {
@@ -41,6 +48,7 @@ class BadgeController {
         [badgeInstance: badgeInstance]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def badgeInstance = Badge.get(id)
         if (!badgeInstance) {
@@ -52,6 +60,7 @@ class BadgeController {
         [badgeInstance: badgeInstance]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def badgeInstance = Badge.get(id)
         if (!badgeInstance) {
@@ -81,6 +90,7 @@ class BadgeController {
         redirect(action: "show", id: badgeInstance.id)
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def badgeInstance = Badge.get(id)
         if (!badgeInstance) {

@@ -1,4 +1,9 @@
 package org.isima.sof
+import grails.plugins.springsecurity.Secured;
+
+
+import org.springframework.dao.DataIntegrityViolationException
+
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -15,10 +20,12 @@ class CommentController {
         [commentInstanceList: Comment.list(params), commentInstanceTotal: Comment.count()]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def create() {
         [commentInstance: new Comment(params)]
     }
-
+	
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
         def commentInstance = new Comment(params)
         if (!commentInstance.save(flush: true)) {
@@ -41,6 +48,7 @@ class CommentController {
         [commentInstance: commentInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def commentInstance = Comment.get(id)
         if (!commentInstance) {
@@ -52,6 +60,7 @@ class CommentController {
         [commentInstance: commentInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def commentInstance = Comment.get(id)
         if (!commentInstance) {
@@ -81,6 +90,7 @@ class CommentController {
         redirect(action: "show", id: commentInstance.id)
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def commentInstance = Comment.get(id)
         if (!commentInstance) {

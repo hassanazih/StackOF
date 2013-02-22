@@ -1,4 +1,6 @@
 package org.isima.sof
+import grails.plugins.springsecurity.Secured;
+
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -15,10 +17,12 @@ class AnswerController {
         [answerInstanceList: Answer.list(params), answerInstanceTotal: Answer.count()]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def create() {
         [answerInstance: new Answer(params)]
     }
-
+	
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
         def answerInstance = new Answer(params)
         if (!answerInstance.save(flush: true)) {
@@ -41,6 +45,7 @@ class AnswerController {
         [answerInstance: answerInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def answerInstance = Answer.get(id)
         if (!answerInstance) {
@@ -52,6 +57,7 @@ class AnswerController {
         [answerInstance: answerInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def answerInstance = Answer.get(id)
         if (!answerInstance) {
@@ -81,6 +87,7 @@ class AnswerController {
         redirect(action: "show", id: answerInstance.id)
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def answerInstance = Answer.get(id)
         if (!answerInstance) {

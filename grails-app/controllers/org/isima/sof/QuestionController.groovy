@@ -1,4 +1,8 @@
 package org.isima.sof
+import grails.plugins.springsecurity.Secured;
+
+
+import org.springframework.dao.DataIntegrityViolationException
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -15,10 +19,12 @@ class QuestionController {
         [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def create() {
         [questionInstance: new Question(params)]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
         def questionInstance = new Question(params)
         if (!questionInstance.save(flush: true)) {
@@ -41,6 +47,7 @@ class QuestionController {
         [questionInstance: questionInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {
@@ -52,6 +59,7 @@ class QuestionController {
         [questionInstance: questionInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {
@@ -80,7 +88,8 @@ class QuestionController {
         flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
         redirect(action: "show", id: questionInstance.id)
     }
-
+	
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {

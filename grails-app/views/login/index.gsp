@@ -64,7 +64,7 @@
 		hello baby
 	</g:if>
     <g:else>
-      <form class="form-signin" controller="Login" action="authenticate" method="post">
+      <g:form class="form-signin" controller="Login" action="authenticate" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
@@ -75,7 +75,7 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-large btn-primary" type="submit" >Sign in</button>
-      </form>
+      </g:form>
 	</g:else>
     </div> <!-- /container -->
 

@@ -1,15 +1,19 @@
 package org.isima.sof
 
+import grails.plugins.springsecurity.Secured;
 import org.springframework.dao.DataIntegrityViolationException
 
 class UserController {
 
+	def springSecurityService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
     def index() {
         redirect(action: "list", params: params)
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
@@ -30,6 +34,7 @@ class UserController {
         redirect(action: "show", id: userInstance.id)
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def show(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -41,6 +46,7 @@ class UserController {
         [userInstance: userInstance]
     }
 
+	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -52,6 +58,7 @@ class UserController {
         [userInstance: userInstance]
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -81,6 +88,7 @@ class UserController {
         redirect(action: "show", id: userInstance.id)
     }
 
+	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -99,4 +107,9 @@ class UserController {
             redirect(action: "show", id: id)
         }
     }
+	
+	private currentUser()
+	{
+		return User.get(springSecurityService.principal.id)
+	}
 }
