@@ -2,10 +2,14 @@ package org.isima.sof
 
 class Tag {
 
-	String name;
+	String name
 	
-	static belongsTo = [question:Question];
     static constraints = {
 		name(nullable : false,blank:false)
     }
+	
+	String toString()
+	{
+		return name
+	}
 }

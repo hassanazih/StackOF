@@ -7,4 +7,9 @@ class Badge {
     static constraints = {
 		type(nullable : false,blank:false)
     }
+	
+	String toString()
+	{
+		return type
+	}
 }

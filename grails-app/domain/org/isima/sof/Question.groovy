@@ -13,10 +13,10 @@ class Question {
     static constraints = {
 		answers(nullable:true)
 		comments(nullable:true)
-		tags(nullable:true)
+	//	tags(nullable:true)
 		creationDate(nullable : false,blank:false)
-		description(nullable : false,blank:false)
-		titre(nullable : false,blank:false)
+		description(nullable : false,blank:false, maxSize : 1000)
+		titre(nullable : false,blank:false,maxSize : 400)
 		
     }
 }

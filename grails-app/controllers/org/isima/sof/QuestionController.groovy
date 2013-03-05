@@ -8,6 +8,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class QuestionController {
 
+	def springSecurityService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -19,14 +21,22 @@ class QuestionController {
         [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
     }
 
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {
+	//	def today = new Date()
+		//def titre = params['titre']
+		//def description = params['description']
+
         [questionInstance: new Question(params)]
     }
 
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['IS_AUTHENTICATED_FULLY'])
     def save() {
-        def questionInstance = new Question(params)
+		def today = new Date()
+		def titre = params['titre']
+		def description = params['description']
+		
+        def questionInstance = new Question(titre:titre,description:description,user:User.get(springSecurityService.principal.id),votesNb:0,viewsNb:0,creationDate:today)
         if (!questionInstance.save(flush: true)) {
             render(view: "create", model: [questionInstance: questionInstance])
             return
@@ -38,16 +48,17 @@ class QuestionController {
 
     def show(Long id) {
         def questionInstance = Question.get(id)
+		
         if (!questionInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), id])
             redirect(action: "list")
             return
         }
-
+		questionInstance.viewsNb++;
         [questionInstance: questionInstance]
     }
 
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['IS_AUTHENTICATED_FULLY'])
     def edit(Long id) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {
@@ -59,7 +70,7 @@ class QuestionController {
         [questionInstance: questionInstance]
     }
 
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['IS_AUTHENTICATED_FULLY'])
     def update(Long id, Long version) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {
@@ -89,7 +100,7 @@ class QuestionController {
         redirect(action: "show", id: questionInstance.id)
     }
 	
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['IS_AUTHENTICATED_FULLY'])
     def delete(Long id) {
         def questionInstance = Question.get(id)
         if (!questionInstance) {
