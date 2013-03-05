@@ -1,3 +1,4 @@
+import org.isima.sof.Answer
 import org.isima.sof.Question
 import org.isima.sof.SecRole
 import org.isima.sof.SecUser
@@ -65,10 +66,15 @@ class BootStrap {
 		tag04.save(failOnError:true)
 		tag05.save(failOnError:true)
 		
+		
+		
+		
+		
 		/*
 		 * Ajout de quelques questions 
 		 */
 		def today = new Date()
+		
 		def question01 = new Question(user:user, creationDate:today, titre:"Looking for JExcel API", description:"Hi all, i'm looking for a Java api that can help me edit stylesheets. thank you")
 		def question02 = new Question(user:user, creationDate:today, titre:"How to handle date types in xml", description:"Hi all, I want to build xml files automatically by a java program, but i don't know how can i express date expressions in an xml format. please help")
 		def question03 = new Question(user:user, creationDate:today, titre:"Smat pointers", description:"Wrong section")
@@ -84,6 +90,16 @@ class BootStrap {
 		question02.save(failOnError:true)
 		question03.save(failOnError:true)
 		question04.save(failOnError:true)
+		
+		
+		/* Ajout de quelques réponses */
+		
+		
+		def answer01 = new Answer(user:user,description:"Réponse 1",creationDate:today,question:question01)
+		def answer02 = new Answer(user:user,description:"Réponse 2",creationDate:today,question:question01)
+		def answer03 = new Answer(user:user,description:"Réponse 3",creationDate:today,question:question01)
+		
+		
 		
 		
     }

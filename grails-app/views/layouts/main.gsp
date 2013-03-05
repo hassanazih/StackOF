@@ -78,7 +78,7 @@
 		<div class="span5 offset1">
 			<ul >
 	
-				<li><g:link controller="question" action="list"><g:message code="Question" /></g:link></li>
+				<li><g:link controller="question" action="list"><g:message code="Questions" /></g:link></li>
 				<li><g:link controller="question" action="create"><g:message code="ask.question"  /></g:link></li>
 				
 				<sec:ifAllGranted roles="ROLE_USER">		
