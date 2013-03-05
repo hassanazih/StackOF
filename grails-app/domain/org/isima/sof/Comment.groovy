@@ -11,4 +11,9 @@ class Comment {
 		creationDate(nullable : false,blank:false)
 		description(nullable : false,blank:false)
     }
+	
+	String toString()
+	{
+		return description
+	}
 }

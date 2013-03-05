@@ -30,6 +30,7 @@ class LoginController {
 	 */
 	def index = {
 		if (springSecurityService.isLoggedIn()) {
+			User.currentUser = User.get(springSecurityService.principal.id)
 			redirect uri: SpringSecurityUtils.securityConfig.successHandler.defaultTargetUrl
 		}
 		else {

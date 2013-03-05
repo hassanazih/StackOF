@@ -19,7 +19,7 @@ class QuestionController {
         [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
     }
 
-	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
+	@Secured(['ROLE_USER'])
     def create() {
         [questionInstance: new Question(params)]
     }
@@ -38,12 +38,13 @@ class QuestionController {
 
     def show(Long id) {
         def questionInstance = Question.get(id)
+		
         if (!questionInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), id])
             redirect(action: "list")
             return
         }
-
+		questionInstance.viewsNb++;
         [questionInstance: questionInstance]
     }
 

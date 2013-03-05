@@ -10,6 +10,7 @@ class User extends SecUser{
 	Date birthday;
 	String location;
 	String email;
+	static User currentUser;
 	
 	static hasMany = [badges:Badge, answers:Answer, questions:Question, comments:Comment];
     static constraints = {
@@ -26,11 +27,10 @@ class User extends SecUser{
 		name(nullable:true)
 		avatar(nullable:true)
 		inscriptionDate(nullable:true)
-
     }
 	
 	String toString()
 	{
-		name
+		username
 	}
 }

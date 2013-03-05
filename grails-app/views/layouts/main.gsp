@@ -9,6 +9,7 @@
 
     <!-- Les styles -->
    	<link rel="stylesheet" href="${resource(dir: 'bootstrap/css', file: 'bootstrap.css')}" type="text/css">
+   	<link rel="stylesheet" href="${resource(dir: 'css', file: 'app.css')}" type="text/css">
 
     <style type="text/css">
       body {
@@ -55,13 +56,17 @@
           </a>
           <a class="brand" href="#">My StackOverflow</a>
           <div class="nav-collapse collapse">
+			<sec:ifLoggedIn>
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
+				<sec:username/> (<g:link controller="logout"> logout </g:link>)
             </p>
+            </sec:ifLoggedIn>
             <ul class="nav">
               <li><a href="/">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li><a href="/about">About</a></li>
+              <sec:ifNotLoggedIn>
               <li><%= link(action:'index',controller:'login') { 'Log in' }%></li>
+              </sec:ifNotLoggedIn>
               <li><a href="#contact">Contact</a></li>
               
             </ul>
@@ -69,14 +74,18 @@
         </div>
       </div>
     </div>
-	<div class="row-fluid" id="navcontainer" >
+    <div class="row-fluid" id="navcontainer" >
 		<div class="span5 offset1">
 			<ul >
+	
 				<li><g:link controller="question" action="list"><g:message code="Question" /></g:link></li>
-				<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
-				<li><g:link controller="user" action="list"><g:message code="User" /></g:link></li>
-				<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
-				<li><g:link controller="create" action="create"><g:message code="ask.question"  /></g:link></li>
+				<li><g:link controller="question" action="create"><g:message code="ask.question"  /></g:link></li>
+				
+				<sec:ifAllGranted roles="ROLE_USER">		
+					<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
+					<li><g:link controller="user" action="list"><g:message code="User" /></g:link></li>
+					<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
+				</sec:ifAllGranted>		
 			</ul>
 		</div>
 	</div>
@@ -85,7 +94,7 @@
 		<div class="span9">
      		<g:layoutBody />
 		</div>
-	    <div class="span3 offset1">
+	     <div class="span3 offset1">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header"><g:message code="recent.tags"  /></li>
@@ -102,8 +111,9 @@
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+          </div>
+        </div>
+       
       </div><!--/row-->
       <hr>
 
