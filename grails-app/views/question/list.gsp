@@ -11,8 +11,8 @@
 		
 		
 				<!-- <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>-->
-		<div id="" class="span16" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+		<div id="" class="span11" role="main">
+			<h1>Questions</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -78,5 +78,17 @@
 				<g:paginate total="${questionInstanceTotal}" />
 			</div>
 		</div>
+		<div class="span3">
+         		<div class="well sidebar-nav">
+            		<ul class="nav nav-list">
+              			<li class="nav-header"><g:message code="recent.tags"  /></li>
+            				<g:each in="${tagInstanceList}" status="i" var="tagInstance">
+								<li></i><g:link action="show" id="${tagInstance.id}">${fieldValue(bean: tagInstance, field: "name")}</g:link></li>
+							</g:each>
+            		</ul>
+          		</div>
+        	</div>
+
+		 <hr>
 	</body>
 </html>

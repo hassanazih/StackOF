@@ -1,3 +1,4 @@
+<%@ page import="org.isima.sof.Tag" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +30,8 @@
       	color: #646464; 
       }
     </style>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+   
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -76,7 +78,7 @@
     </div>
     <div class="row-fluid" id="navcontainer" >
 		<div class="span5 offset1">
-			<ul >
+			<ul>
 	
 				<li><g:link controller="question" action="list"><g:message code="Questions" /></g:link></li>
 				<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
@@ -94,38 +96,20 @@
 	</div>
 	
     <div class=" container-fluid">
-		<div class="span9">
+		<!-- <div class="span9">-->
      		<g:layoutBody />
-		</div>
-	     <div class="span3 offset1">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header"><g:message code="recent.tags"  /></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </div>
-        </div>
-       
-      </div><!--/row-->
-      <hr>
-
-      <footer>
-        <p>&copy; Our Stack Overflow 2013</p>
-      </footer>
-
+		<!--  </div>-->
     </div><!--/.fluid-container-->
-
+    
+    
+        <!-- Footer
+    ================================================== -->
+    <footer class="modal-footer">
+      <div class="container">
+       	<p>&copy; Our Stack Overflow 2013</p>
+      </div>
+    </footer>
+    
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster

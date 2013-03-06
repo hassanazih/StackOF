@@ -9,7 +9,8 @@ stacktrace.log
 /*DB.*
 /cobertura.ser
 .DS_Store
-/target/
+/target/classes
+/target-eclipse/classes
 /out/
 /web-app/plugins
 /web-app/WEB-INF/classes

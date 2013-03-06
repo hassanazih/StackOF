@@ -1,4 +1,6 @@
 package org.isima.sof
+import java.util.Date;
+
 import grails.plugins.springsecurity.Secured;
 
 
@@ -18,8 +20,9 @@ class QuestionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
-    }
+		//Tag.list(max:10, sort: "creationDate", order:desc)
+        [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
+	}
 
 	@Secured(['IS_AUTHENTICATED_FULLY'])
     def create() {

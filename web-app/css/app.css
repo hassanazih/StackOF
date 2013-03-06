@@ -23,6 +23,22 @@ ul.actions {
     width: 730px;
 }
 
+.tag-summary {
+    border-bottom: 1px dotted #EAEAEA;
+    border-right:  1px dotted #EAEAEA;
+    float: none;
+    text-align: center;
+    overflow: hidden;
+    padding: 11px 0;
+    margin-top: 10px;
+    width: 50px;
+   
+}
+
+.tag-summary a{
+    color: #4a6b82;
+   }
+
 .task .created {
     position: absolute;
     bottom: 1.5em;
