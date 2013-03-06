@@ -39,11 +39,8 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="bootstrap/ico/favicon.png">
+    <link rel="shortcut icon"  href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
+	<link rel="icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
   </head>
 
   <body>
