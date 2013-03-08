@@ -23,20 +23,13 @@
 		
 	</label>
 	
-<ul class="one-to-many">
+
 <g:each in="${questionInstance?.tags?}" var="t">
     <li><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
 </g:each>
-
-	<g:form>
-		<resource:autoComplete skin="default"/>
-    	 
-        <richui:autoComplete name="name" minQueryLength="1" queryDelay="0.2" forceSelection="true" action="${createLinkTo('dir': 'tag/searchAJAX')}"/> 
-    	
-	</g:form>
-
-
-</ul>
+<resource:autoComplete skin="default"/>
+<richui:autoComplete name="tags"  action="${createLinkTo('dir': 'tag/suggestedTags')}"  delimChar=" / " forceSelection="false" shadow="true"/> 
+ 
 
 </div>
 

@@ -17,23 +17,23 @@ class TagController {
 	
 	
 	
-	def searchAJAX = { 
-     
-	    def rc = [:] // id -> name mapping 
-	   
-	    def matches = Tag.findByName(params.query ?: '') 
-	    matches.each { tag -> rc[tag.id] = tag.name } 
-	    render(contentType: 'text/xml') { 
-	      results() { 
-	        rc.each { k, v -> 
-	          result() { 
-	            name("${v.encodeAsHTML()}") 
-	            id (k) 
-	          } 
-	        } 
-	      } 
-	    } 
-	  } 
+	def suggestedTags = { 	   
+	    def tags = Tag.findAllByNameLike("%${params.query}%") 
+	    renderAsXml(tags)
+	}
+	def renderAsXml(tags) {
+		render(contentType:"text/xml"){
+			results{
+				tags.each { tag ->
+					result {
+						name(tag.name)
+						id(tag.id)
+					}
+				}
+			}
+		}
+		
+	}
 	
 
     def create() {
