@@ -11,6 +11,7 @@ class Answer {
     static constraints = {
 		creationDate(nullable : false,blank:false)
 		description(nullable : false,blank:false)
+		comments(nullable:true)
     }
 	
 	String toString()

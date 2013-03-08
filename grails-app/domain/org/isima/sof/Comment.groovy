@@ -10,6 +10,8 @@ class Comment {
     static constraints = {
 		creationDate(nullable : false,blank:false)
 		description(nullable : false,blank:false)
+		answer(nullable:true)
+		question(nullable:true)
     }
 	
 	String toString()
