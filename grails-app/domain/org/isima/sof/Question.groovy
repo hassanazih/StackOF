@@ -19,4 +19,6 @@ class Question {
 		titre(nullable : false,blank:false,maxSize : 400)
 		
     }
+	
+	
 }

@@ -83,11 +83,11 @@
 				<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
 				<li><g:link controller="question" action="create"><g:message code="ask.question"  /></g:link></li>
 				
-				<sec:ifAllGranted roles="ROLE_USER">		
+				<!--  <sec:ifAllGranted roles="ROLE_USER">		
 					<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
 					<li><g:link controller="user" action="list"><g:message code="User" /></g:link></li>
 					<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
-				</sec:ifAllGranted>		
+				</sec:ifAllGranted>-->		
 			</ul>
 		</div>
 	</div>

@@ -14,6 +14,27 @@ class TagController {
         params.max = Math.min(max ?: 10, 100)
         [tagInstanceList: Tag.list(params), tagInstanceTotal: Tag.count()]
     }
+	
+	
+	
+	def searchAJAX = { 
+     
+	    def rc = [:] // id -> name mapping 
+	   
+	    def matches = Tag.findByName(params.query ?: '') 
+	    matches.each { tag -> rc[tag.id] = tag.name } 
+	    render(contentType: 'text/xml') { 
+	      results() { 
+	        rc.each { k, v -> 
+	          result() { 
+	            name("${v.encodeAsHTML()}") 
+	            id (k) 
+	          } 
+	        } 
+	      } 
+	    } 
+	  } 
+	
 
     def create() {
         [tagInstance: new Tag(params)]

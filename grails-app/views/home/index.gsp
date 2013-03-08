@@ -39,20 +39,15 @@
 									<div class="views " title="${fieldValue(bean: questionInstance, field: "votesNb")} views"> ${fieldValue(bean: questionInstance, field: "viewsNb")} views </div>
 								</div>
 								<g:link action="show" id="${questionInstance.id}" ><h4 class="question-hyperlink"> ${fieldValue(bean: questionInstance, field: "titre")}</h4></g:link>
-								<div class="excerpt"> ${fieldValue(bean: questionInstance, field: "description")} </div>
+								
 								
 								
 								<div class="started fr">
 									<div class="user-info ">
 										<div class="user-action-time">
-											created
 											<span class="relativetime" title="2013-03-04 13:58:32Z">${fieldValue(bean: questionInstance, field: "creationDate")}</span>
 										</div>
-										<div class="user-gravatar32">
-											<a href="/users/138030/rakesh">
-													<img width="32" height="32" alt="" src="http://www.gravatar.com/avatar/7fd70fb599d55a9639e248231d1f81ba?s=32&d=identicon&r=PG">
-											</a>
-										</div>
+										
 										<div class="user-details">
 											<g:link action="show" id="${questionInstance.user.id}" >	${fieldValue(bean: questionInstance, field: "user")} </g:link>
 											

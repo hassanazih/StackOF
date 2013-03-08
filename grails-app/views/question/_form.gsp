@@ -12,11 +12,9 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="question.description.label" default="Description" />
-		
-	</label>
-	<g:textArea name="description" maxLength="1000" value="${questionInstance?.description}"/>
+	<resource:richTextEditor type="advanced" />
+	<richui:richTextEditor name="description" value="${questionInstance?.description}" width="525" />
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'tags', 'error')} ">
@@ -29,9 +27,15 @@
 <g:each in="${questionInstance?.tags?}" var="t">
     <li><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
 </g:each>
-<li class="add">
-<g:link controller="tag" action="create" params="['question.id': questionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'tag.label', default: 'Tag')])}</g:link>
-</li>
+
+	<g:form>
+		<resource:autoComplete skin="default"/>
+    	 
+        <richui:autoComplete name="name" minQueryLength="1" queryDelay="0.2" forceSelection="true" action="${createLinkTo('dir': 'tag/searchAJAX')}"/> 
+    	
+	</g:form>
+
+
 </ul>
 
 </div>

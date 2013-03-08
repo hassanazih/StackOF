@@ -7,4 +7,6 @@ class HomeController {
 		[tagInstanceList: Tag.list(params), tagInstanceTotal: Tag.count(),questionInstanceList: Question.list(params), questionInstanceTotal: Question.count()]
 
 	}
+	
+	
 }
