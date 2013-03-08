@@ -13,12 +13,39 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			
-			<div class="span4">
-				<g:fieldValue bean="${questionInstance}" field="description"/>
-				<div class="span4 offeset1">
-					<g:formatDate date="${questionInstance?.creationDate}"/> by <g:link controller="user" action="show" id="${questionInstance?.user?.id}">${questionInstance?.user?.encodeAsHTML()}</g:link>
+			<div class="statscontainer">
+				<div class="vote">
+	    			<a class="vote-up-off" title="+1">up vote</a>
+	    			<span class="property-value" aria-labelledby="votesNb-label"><g:fieldValue bean="${questionInstance}" field="votesNb"/></span>
+	    			<a class="vote-down-off" title="-1">down vote</a>
 				</div>
+			</div>
+			<div class="span8">
+				<div class="excerpt"> ${fieldValue(bean: questionInstance, field: "description")} </div>
+					<div class="started fr">
+						<div class="user-info ">
+							<div class="user-action-time">
+								created
+								<span class="relativetime" title="2013-03-04 13:58:32Z">${fieldValue(bean: questionInstance, field: "creationDate")}</span>
+							</div>
+							<div class="user-gravatar32">
+								<a href="/users/138030/rakesh">
+										<img width="32" height="32" alt="" src="http://www.gravatar.com/avatar/7fd70fb599d55a9639e248231d1f81ba?s=32&d=identicon&r=PG">
+								</a>
+							</div>
+							<div class="user-details">
+								<g:link action="show" id="${questionInstance.user.id}" >	${fieldValue(bean: questionInstance, field: "user")} </g:link>
+								
+								<br>
+								<span class="reputation-score" dir="ltr" title="reputation score">0</span>
+							</div>
+						</div>
+					</div>
+					<g:if test="${questionInstance?.comments}">
+						<g:each in="${questionInstance.comments}" var="c">
+						<span class="comments" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					</g:if>
 			</div>
 					
 			
@@ -30,7 +57,7 @@
 					
 					
 			
-			<ol class="property-list question" style="">
+			<ol class=" " style="">
 			
 			
 			
@@ -39,16 +66,7 @@
 			
 			
 			
-				<g:if test="${questionInstance?.comments}">
-				<li class="fieldcontain">
-					<span id="comments-label" class="property-label"><g:message code="question.comments.label" default="Comments" /></span>
-					
-						<g:each in="${questionInstance.comments}" var="c">
-						<span class="property-value" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+				
 			
 				<g:if test="${questionInstance?.answers}">
 				<li class="fieldcontain">
@@ -68,44 +86,18 @@
 			
 				<g:if test="${questionInstance?.tags}">
 				<li class="fieldcontain">
-					<span id="tags-label" class="property-label"><g:message code="question.tags.label" default="Tags" /></span>
+					
 					
 						<g:each in="${questionInstance.tags}" var="t">
-						<span class="property-value" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="post-tag" aria-labelledby="tags-label"><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
 				</g:if>
 			
-				
-			
-			
-				<g:if test="${questionInstance?.viewsNb}">
-				<li class="fieldcontain">
-					<span id="viewsNb-label" class="property-label"><g:message code="question.viewsNb.label" default="Views Nb" /></span>
-					
-						<span class="property-value" aria-labelledby="viewsNb-label"><g:fieldValue bean="${questionInstance}" field="viewsNb"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.votesNb}">
-				<li class="fieldcontain">
-					<span id="votesNb-label" class="property-label"><g:message code="question.votesNb.label" default="Votes Nb" /></span>
-					
-						<span class="property-value" aria-labelledby="votesNb-label"><g:fieldValue bean="${questionInstance}" field="votesNb"/></span>
-					
-				</li>
-				</g:if>
 			
 			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${questionInstance?.id}" />
-					<g:link class="edit" action="edit" id="${questionInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
 		</div>
 	</body>
 </html>
