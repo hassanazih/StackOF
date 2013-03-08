@@ -60,17 +60,18 @@
 			</div>
 				
 					
-			<div class="statscontainer">
-				<div class="vote">
-	    			<a class="vote-up-off" title="+1">up vote</a>
-	    			<span class="property-value" aria-labelledby="votesNb-label"><g:fieldValue bean="${questionInstance}" field="votesNb"/></span>
-	    			<a class="vote-down-off" title="-1">down vote</a>
-				</div>
-			</div>
+			
 			<g:if test="${questionInstance?.answers}">
 				
 				<h3><g:message code="question.answers.label" default="Answers" /></h3>
 				<g:each in="${questionInstance.answers}" var="a">
+					<div class="statscontainer">
+						<div class="vote">
+	    					<a class="vote-up-off" title="+1">up vote</a>
+	    					<span class="property-value" aria-labelledby="votesNb-label">      </span>
+	    					<a class="vote-down-off" title="-1">down vote</a>
+						</div>
+					</div>
 					<div class="span8">
 						<div class="excerpt"> ${a.description} </div>
 							<div class="started fr">
