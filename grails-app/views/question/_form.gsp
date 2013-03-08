@@ -13,7 +13,8 @@
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} ">
 	<resource:richTextEditor type="advanced" />
-	<richui:richTextEditor name="description" value="${questionInstance?.description}" width="525" />
+	
+	<richui:richTextEditor name="description" value="${fieldValue(bean:questionInstance,description:'myText').decodeHTML()}" width="525" />
 	
 </div>
 
@@ -28,7 +29,7 @@
     <li><g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
 </g:each>
 <resource:autoComplete skin="default"/>
-<richui:autoComplete name="tags"  action="${createLinkTo('dir': 'tag/suggestedTags')}"  delimChar=" / " forceSelection="false" shadow="true"/> 
+<richui:autoComplete name="tags"  action="${createLinkTo('dir': 'tag/suggestedTags')}"  delimChar=" / " forceSelection="false" shadow="true" class="post-tag"/> 
  
 
 </div>
