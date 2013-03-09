@@ -105,11 +105,11 @@
     
         <!-- Footer
     ================================================== -->
-    <footer class="modal-footer">
+    <div class="modal-footer" id="footer">
       <div class="container">
        	<p>&copy; Our Stack Overflow 2013</p>
       </div>
-    </footer>
+    </div>
     
     <!-- Le javascript
     ================================================== -->

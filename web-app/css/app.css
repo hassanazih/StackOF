@@ -190,7 +190,17 @@ a {
     width: 185px;
 }
 
-
+#footer
+{
+    clear: both;
+    padding: 0;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
 
 
 
