@@ -15,9 +15,9 @@
 			</g:if>
 			<div class="statscontainer">
 				<div class="vote">
-	    			<a class="vote-up-off" title="+1">up vote</a>
+	    			<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
 	    			<span class="property-value" aria-labelledby="votesNb-label"><g:fieldValue bean="${questionInstance}" field="votesNb"/></span>
-	    			<a class="vote-down-off" title="-1">down vote</a>
+	    			<a class="vote-down-off" title="-1"><i class=" icon-chevron-down"></i></a>
 				</div>
 			</div>
 			<div class="span8">
@@ -67,9 +67,9 @@
 				<g:each in="${questionInstance.answers}" var="a">
 					<div class="statscontainer">
 						<div class="vote">
-	    					<a class="vote-up-off" title="+1">up vote</a>
+	    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
 	    					<span class="property-value" aria-labelledby="votesNb-label">   ${a.votesNb}   </span>
-	    					<a class="vote-down-off" title="-1">down vote</a>
+	    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-down"></i></a>
 						</div>
 					</div>
 					<div class="span8">
