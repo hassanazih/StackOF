@@ -8,6 +8,7 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
+ <!--		
 		<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
@@ -15,50 +16,79 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="list-user" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-				<thead>
-					<tr>
-					
-						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
-					
-						<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
-					
-						<g:sortableColumn property="profileViews" title="${message(code: 'user.profileViews.label', default: 'Profile Views')}" />
-					
-						<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
-					
-						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
-										
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${userInstanceList}" status="i" var="userInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "password")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "profileViews")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "website")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "email")}</td>
-					
-						
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
+-->		
+		<richui:tabView id="usersTabs"> 
+			<richui:tabLabels> 
+				<richui:tabLabel selected="true" title="reputation" /> 
+				<richui:tabLabel title="new users" /> 
+				<richui:tabLabel title="voters" />
+				<richui:tabLabel title="moderators" />  	   
+			</richui:tabLabels>
+
+			<richui:tabContents>
+				<richui:tabContent>
+
+					<div id="list-user" class="content scaffold-list" role="main">
+						<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+						<g:if test="${flash.message}">
+						<div class="message" role="status">${flash.message}</div>
+						</g:if>
+						<table>
+							<thead>
+								<tr>
+								
+									<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
+								
+									<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
+								
+									<g:sortableColumn property="profileViews" title="${message(code: 'user.profileViews.label', default: 'Profile Views')}" />
+								
+									<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
+								
+									<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
+								
+									<g:sortableColumn property="admin" title="${message(code: 'user.admin.label', default: 'Admin')}" />
+								
+								</tr>
+							</thead>
+							<tbody>
+							<g:each in="${userInstanceList}" status="i" var="userInstance">
+								<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+								
+									<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
+								
+									<td>${fieldValue(bean: userInstance, field: "password")}</td>
+								
+									<td>${fieldValue(bean: userInstance, field: "profileViews")}</td>
+								
+									<td>${fieldValue(bean: userInstance, field: "website")}</td>
+								
+									<td>${fieldValue(bean: userInstance, field: "email")}</td>
+								
+									<td><g:formatBoolean boolean="${userInstance.admin}" /></td>
+								
+								</tr>
+							</g:each>
+							</tbody>
+						</table>
+					</div>
+				</richui:tabContent>
+				<richui:tabContent> 
+					<p>new users</p> 
+				</richui:tabContent>
+				<richui:tabContent> 
+					<p>voters</p> 
+				</richui:tabContent>
+				<richui:tabContent> 
+					<p>editors</p> 
+				</richui:tabContent>
+				<richui:tabContent> 
+					<p>moderators</p> 
+				</richui:tabContent>
+			</richui:tabContents> 
+		</richui:tabView>
+		<div class="pagination">
 				<g:paginate total="${userInstanceTotal}" />
-			</div>
 		</div>
 	</body>
 </html>
