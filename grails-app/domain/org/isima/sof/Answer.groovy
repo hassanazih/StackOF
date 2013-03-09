@@ -4,6 +4,7 @@ class Answer {
 
 	Date creationDate;
 	String description;
+	int votesNb=0;
 	
 	static hasMany = [comments:Comment];
 	static belongsTo = [question:Question,user:User];

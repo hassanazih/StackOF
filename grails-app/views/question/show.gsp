@@ -68,7 +68,7 @@
 					<div class="statscontainer">
 						<div class="vote">
 	    					<a class="vote-up-off" title="+1">up vote</a>
-	    					<span class="property-value" aria-labelledby="votesNb-label">      </span>
+	    					<span class="property-value" aria-labelledby="votesNb-label">   ${a.votesNb}   </span>
 	    					<a class="vote-down-off" title="-1">down vote</a>
 						</div>
 					</div>
