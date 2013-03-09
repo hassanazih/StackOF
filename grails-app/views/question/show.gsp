@@ -97,6 +97,15 @@
 					</g:each>
 				</g:if>
 					
+				<h3>Your answer</h3>	
+				<g:form action="save" >
+					<fieldset class="form">
+						<g:render template="/answer/form"/>
+					</fieldset>
+					<fieldset class="buttons">
+						<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					</fieldset>
+				</g:form>
 		
 
 		</div>
