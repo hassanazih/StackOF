@@ -13,7 +13,6 @@ class UserController {
         redirect(action: "list", params: params)
     }
 
-	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
@@ -34,7 +33,6 @@ class UserController {
         redirect(action: "show", id: userInstance.id)
     }
 
-	@Secured(['ROLE_ADMIN','IS_AUTHENTICATED_FULLY'])
     def show(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {

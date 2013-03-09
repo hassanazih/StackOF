@@ -33,9 +33,7 @@
 						<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
-					
-						<g:sortableColumn property="admin" title="${message(code: 'user.admin.label', default: 'Admin')}" />
-					
+										
 					</tr>
 				</thead>
 				<tbody>
@@ -52,7 +50,7 @@
 					
 						<td>${fieldValue(bean: userInstance, field: "email")}</td>
 					
-						<td><g:formatBoolean boolean="${userInstance.admin}" /></td>
+						
 					
 					</tr>
 				</g:each>

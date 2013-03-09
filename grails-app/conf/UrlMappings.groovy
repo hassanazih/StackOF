@@ -9,7 +9,7 @@ class UrlMappings {
 		}
 
 		
-		"/"(view:"/error")
+		"/sof"(view:"index.gsp")
 		"500"(view:'/error')
 		"/login/$action"(controller:"login")
 		"/logout/$action"(controller:"logout")
