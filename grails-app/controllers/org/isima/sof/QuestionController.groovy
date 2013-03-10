@@ -20,6 +20,22 @@ class QuestionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		switch(params.orderby)
+		{
+			case 1: 
+				params.sort = "creationDate"
+				params.order = "desc"
+				break
+			case 2:
+				params.sort = "votesNb"
+				params.order = "desc"
+				break
+			case 3:
+				params.sort = "viewsNb"
+				params.order = "desc"
+				break
+			
+		}
 		//Tag.list(max:10, sort: "creationDate", order:desc)
         [questionInstanceList: Question.list(params), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
 	}

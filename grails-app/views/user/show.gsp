@@ -112,14 +112,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.admin}">
-				<li class="fieldcontain">
-					<span id="admin-label" class="property-label"><g:message code="user.admin.label" default="Admin" /></span>
-					
-						<span class="property-value" aria-labelledby="admin-label"><g:formatBoolean boolean="${userInstance?.admin}" /></span>
-					
-				</li>
-				</g:if>
+				
 			
 				<g:if test="${userInstance?.avatar}">
 				<li class="fieldcontain">
@@ -166,14 +159,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.reputationScore}">
-				<li class="fieldcontain">
-					<span id="reputationScore-label" class="property-label"><g:message code="user.reputationScore.label" default="Reputation Score" /></span>
-					
-						<span class="property-value" aria-labelledby="reputationScore-label"><g:fieldValue bean="${userInstance}" field="reputationScore"/></span>
-					
-				</li>
-				</g:if>
+				
 			
 			</ol>
 			<g:form>

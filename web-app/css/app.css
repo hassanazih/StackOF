@@ -202,11 +202,116 @@ a {
     width: 100%;
 }
 
+.user-info {
+    height: 35px;
+    width: 250px;
+}
+
+.user-gravatar48 {
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.users-page .user-info .user-gravatar48 {
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.user-gravatar32 {
+    float: left;
+    height: 32px;
+    width: 32px;
+}
+.user-info .user-gravatar32 {
+    float: left;
+    height: 32px;
+    width: 32px;
+}
+.user-info .user-action-time {
+    margin-bottom: 4px;
+    margin-top: 2px;
+}
+
+.user-details {
+    color: #888888;
+    line-height: 17px;
+	margin-left: 5px;    
+}
 
 
+.user-info .user-details {
+    float: left;
+}
+.user-info.user-hover .user-gravatar32, .user-info.user-hover .user-gravatar48 {
+    border-collapse: separate;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
+.gravatar-wrapper-48 {
+    background-color: #E0EAF1;
+    height: 48px;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+    width: 48px;
+}
+.gravatar-wrapper-48 img {
+    height: 48px;
+    margin: 0 auto;
+}
+.reputation-score {
+    color: #444444;
+    font-size: 100%;
+    font-weight: bold;
+    margin-right: 2px;
+}
 
+.user-details td {
+    color: Black;
+    padding: 4px 0;
+}
 
+.users-page #user-browser {
+    margin-left: 5px !important;
+    margin-top: -15px;
+}
 
+.users-page .user-tags, .users-page .user-tags a {
+    color: #888888;
+}
+.users-page .user-tags {
+    font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 13px;
+    margin-left: 53px;
+}
 
+.users-page .user-details {
+    width: 175px !important;
+}
 
+.users-page #user-browser {
+    margin-left: 5px !important;
+    margin-top: -15px;
+}
+
+.users-page .user-info .user-gravatar48 {
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.users-page .user-info .reputation-score {
+    font-size: 110%;
+    margin-right: 0;
+}
+.users-page .user-info .user-tags {
+    clear: both;
+}
+.users-page .subtabs a {
+    font-size: 100%;
+}
+
+.user-tags {
+    font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 13px;
+    margin-left: 53px;
+}

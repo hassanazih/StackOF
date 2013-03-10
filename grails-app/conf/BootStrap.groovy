@@ -20,7 +20,8 @@ class BootStrap {
 		def user = new User(username : "admin",
 							password : "123456",
 							enabled : true	,
-							email: "hassanazih@gmail.com")
+							email: "hassanazih@gmail.com",
+							location: "Clermont-Ferrand, France")
 		
 		if(user.validate())
 		{
@@ -36,7 +37,8 @@ class BootStrap {
 		def admin = new User(username : "user",
 			password : "123456",
 			enabled : true	,
-			email: "hassanazih@gmail.com")
+			email: "hassanazih@gmail.com",
+			location: "Casablanca, Maroc")
 
 		if(admin.validate())
 		{
