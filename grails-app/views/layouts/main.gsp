@@ -70,6 +70,7 @@
               <li><a href="#">About</a></li>
               <sec:ifNotLoggedIn>
               <li><%= link(action:'index',controller:'login') { 'Log in' }%></li>
+              <li><%= link(action:'create',controller:'user') { 'Register' }%></li>
               </sec:ifNotLoggedIn>
               <li><a href="#contact">Contact</a></li>
               
