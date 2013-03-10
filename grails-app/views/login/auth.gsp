@@ -1,6 +1,8 @@
 <html>
 <head>
+	<meta charset="utf-8"/>
 	<meta name='layout' content='main'/>
+	
 	<title><g:message code="springSecurity.login.title"/></title>
 	<style type='text/css' media='screen'>
 	#login {
@@ -92,7 +94,8 @@
 	<br/>
 	<br/>
 	<div class='inner'>
-		<div class='fheader'><g:message code="springSecurity.login.header"/></div>
+		<div class='fheader'>
+		<g:message code="springSecurity.login.header"/></div>
 		<g:if test='${flash.message}'>
 			<div class='login_message'>${flash.message}</div>
 		</g:if>
