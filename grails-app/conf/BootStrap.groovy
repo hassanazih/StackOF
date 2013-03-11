@@ -60,13 +60,17 @@ class BootStrap {
 		def tag02 = new Tag(name:"Xml")	
 		def tag03 = new Tag(name:"UML")				
 		def tag04 = new Tag(name:"C++")
-		def tag05 = new Tag(name:"Others")
+		def tag05 = new Tag(name:"Groovy")
+		def tag06 = new Tag(name:"Grails")
+		def tag07 = new Tag(name:"Others")
 		
 		tag01.save(failOnError:true)
 		tag02.save(failOnError:true)
 		tag03.save(failOnError:true)
 		tag04.save(failOnError:true)
 		tag05.save(failOnError:true)
+		tag06.save(failOnError:true)
+		tag07.save(failOnError:true)
 		
 		
 		
@@ -97,10 +101,11 @@ class BootStrap {
 		/* Ajout de quelques réponses */
 		
 		
-		def answer01 = new Answer(user:user,description:"Réponse 1",creationDate:today,question:question01.id)
-		def answer02 = new Answer(user:user,description:"Réponse 2",creationDate:today,question:question01.id)
+		def answer01 = new Answer(user:user,description:"Reponse 1",creationDate:today,question:question01)
+		def answer02 = new Answer(user:user,description:"Reponse 2",creationDate:today,question:question01)
 		
-		
+		answer01.save(failOnError:true)
+		answer02.save(failOnError:true)
 		
 		
     }
