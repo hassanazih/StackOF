@@ -114,7 +114,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">My StackOverflow</a>
+           <g:link class="brand" controller="home" action="index" >My StackOverflow</g:link>
           <div class="nav-collapse collapse">
 			<sec:ifLoggedIn>
             <p class="navbar-text pull-right">
@@ -122,7 +122,7 @@
             </p>
             </sec:ifLoggedIn>
             <ul class="nav">
-              	<li><a href="/SOF/">${message(code: 'home.label', default: 'No message')}</a></li>
+              	<li><g:link controller="home" action="index" >${message(code: 'home.label', default: 'No message')}</g:link></li>
               	<li><a href="#">${message(code: 'about.label', default: 'About')}</a></li>
               	<sec:ifNotLoggedIn>
               		<li><g:link action="index" controller="login" > ${message(code: 'login.label', default: 'Log in')} </g:link></li>
