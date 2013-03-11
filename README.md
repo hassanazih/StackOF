@@ -20,4 +20,4 @@ The deployment was in Heroku, a cloud application platform, that supports many l
 the site can be found in the next link:  http://ourstackoverflow.herokuapp.com/
 
 Thanks for reading, if you want to learn about the plugins used for the project, the logs and the tests, please visit our wiki:
-https://github.com/hassanazih/StackOF/wiki
+https://github.com/hassanazih/StackOF/wiki/_pages
