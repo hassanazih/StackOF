@@ -8,7 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+	<script type="text/javascript">
+    var Fichier = function Fichier(fichier)
+    {
+        if(window.XMLHttpRequest) obj = new XMLHttpRequest(); //Pour Firefox, Opera,...
 
+        else if(window.ActiveXObject) obj = new ActiveXObject("Microsoft.XMLHTTP"); //Pour Internet Explorer 
+
+        else return(false);
+        
+
+        if (obj.overrideMimeType) obj.overrideMimeType("text/xml"); //Évite un bug de Safari
+
+       
+        obj.open("GET", fichier, false);
+        obj.send(null);
+       
+        if(obj.readyState == 4) return(obj.responseText);
+        else return(false);
+    }
+    
+	function refresh(tabID, templateRender){
+		
+		var Rcontent = Fichier('_'+templateRender);
+
+		document.getElementById(tabID).innerHTML = "<div id='" + tabID + "'>" + Rcontent + "</div>";
+	}
+    </script>
+	<!-- Begin jQuery tabs -->
+	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css" />
+	<script type="text/javascript" >
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+	<!-- End jQuery tabs -->
     <!-- Les styles -->
    	<link rel="stylesheet" href="${resource(dir: 'bootstrap/css', file: 'bootstrap.css')}" type="text/css">
    	<link rel="stylesheet" href="${resource(dir: 'css', file: 'app.css')}" type="text/css">
@@ -33,6 +70,25 @@
       #ask a{ 
       	color:#ff9900
       }
+      #tabs{
+		width:60%;
+		margin-left: 10%; 
+		border:none;
+	  }
+      #ulTabView{
+	
+		background:none;
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom-style:inset;
+		border-bottom-width:thin;
+		float:right;
+	  }
+	
+	  #ulTabView li{
+		background:none;
+	  }
       
     </style>
     

@@ -138,4 +138,22 @@ class QuestionController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def _newestQuestions(){
+		def myMap = ["sort":"creationDate", "order":"desc"]
+		[questionInstanceList: Question.list(myMap), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
+		
+	}
+	
+	def _viewedQuestions(){
+		def myMap = ["sort":"viewsNb", "order":"desc"]
+		[questionInstanceList: Question.list(myMap), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
+		
+	}
+	
+	def _votedQuestions(){
+		def myMap = ["sort":"votesNb", "order":"desc"]
+		[questionInstanceList: Question.list(myMap), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
+		
+	}
 }
