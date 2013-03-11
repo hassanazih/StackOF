@@ -72,7 +72,7 @@
 	    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-down"></i></a>
 						</div>
 					</div>
-					<div class="span8">
+					<div class="span8" id="answers">
 						<div class="excerpt"> ${a.description} </div>
 							<div class="started fr">
 								<div class="user-info ">
@@ -96,18 +96,19 @@
 						</div>
 					</g:each>
 				</g:if>
-				
-				<sec:ifAllGranted roles="ROLE_USER">
-					<h3>Your answer</h3>	
-					<g:form url="[action:'save',controller:'answer']" >
-						<fieldset class="form">
-							<g:render template="/answer/form"/>
-						</fieldset>
-						<fieldset class="buttons">
-							<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-						</fieldset>
-					</g:form>
-				</sec:ifAllGranted>
+				<div>
+					<sec:ifAllGranted roles="ROLE_USER">
+						<h3>Your answer</h3>	
+						<g:form url="[action:'save',controller:'answer']" >
+							<fieldset class="form">
+								<g:render template="/answer/form"/>
+							</fieldset>
+							<fieldset class="buttons">
+								<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+							</fieldset>
+						</g:form>
+					</sec:ifAllGranted>
+				</div>
 		
 
 		</div>
