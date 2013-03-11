@@ -166,6 +166,13 @@ a {
 	margin-bottom:10px
 }
 
+.comment-text 
+{
+  border: 0px solid #cccccc !important;
+  border-bottom:dashed 1px #aaa;
+}
+}
+
 .excerpt {
     line-height: 1.2;
     margin: 0;

@@ -42,15 +42,29 @@
 						</div>
 					</div>
 					<div class="comments span4">
-					<g:if test="${questionInstance?.comments}">
-						<g:each in="${questionInstance.comments}" var="c">
-						<span aria-labelledby="comments-label">
-							${c?.encodeAsHTML()} - 
-							<g:link controller="user" action="show" id="${c.user.id}" >${c.user.toString()}</g:link>
-							${c.creationDate}
-						</span>
-						</g:each>
-					</g:if>
+						
+						<g:if test="${questionInstance?.comments}">
+							<g:each in="${questionInstance.comments}" var="c">
+							<span aria-labelledby="comments-label">
+								${c?.encodeAsHTML()} - 
+								<g:link controller="user" action="show" id="${c.user.id}" >${c.user.toString()}</g:link>
+								${c.creationDate}
+							</span>
+							<br>
+							</g:each>
+						</g:if>
+						<sec:ifAllGranted roles="ROLE_USER">
+							<div class="comment-link">
+								<g:form url="[action:'save',controller:'comment']" style="" >
+									<fieldset class="form">
+										<g:render template="/comment/form"/>
+									</fieldset>
+									<fieldset class="buttons">
+										<g:submitButton name="create" class="btn btn-mini" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+									</fieldset>
+								</g:form>
+							</div>
+						</sec:ifAllGranted>
 					</div>
 					<g:if test="${questionInstance?.tags}">
 					<g:each in="${questionInstance.tags}" var="t">
@@ -63,7 +77,7 @@
 		<div id="" class="span16">	
 			<g:if test="${questionInstance?.answers}">
 				
-				<h3><g:message code="question.answers.label" default="Answers" /></h3>
+				<h3><g:message code="answers.label" default="Answers" /></h3>
 				<g:each in="${questionInstance.answers}" var="a">
 					<div class="answer-list span10">
 						<div class="statscontainer">
@@ -78,7 +92,7 @@
 								<div class="started fr">
 									<div class="user-info ">
 										<div class="user-action-time">
-											answered
+											${message(code: 'answer.answered', default: 'answered')}
 											<span class="relativetime" title="2013-03-04 13:58:32Z">${a.creationDate}</span>
 										</div>
 										<div class="user-gravatar32">
@@ -104,7 +118,7 @@
 				
 				<div>
 					<sec:ifAllGranted roles="ROLE_USER">
-						<h3>Your answer</h3>	
+						<h3>${message(code: 'answer.youranswer', default: 'Your Answer')}</h3>	
 						<g:form url="[action:'save',controller:'answer']" >
 							<fieldset class="form">
 								<g:render template="/answer/form"/>
