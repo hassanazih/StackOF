@@ -160,6 +160,12 @@ a {
     text-align: center;
 }
 
+.answer-list
+{
+	border-bottom:dotted 1px #aaa;
+	margin-bottom:10px
+}
+
 .excerpt {
     line-height: 1.2;
     margin: 0;

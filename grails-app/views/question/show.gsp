@@ -58,44 +58,50 @@
 					</g:each>
 					</g:if>
 			</div>
-				
+		</div>		
 					
-			
+		<div id="" class="span16">	
 			<g:if test="${questionInstance?.answers}">
 				
 				<h3><g:message code="question.answers.label" default="Answers" /></h3>
 				<g:each in="${questionInstance.answers}" var="a">
-					<div class="statscontainer">
-						<div class="vote">
-	    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
-	    					<span class="property-value" aria-labelledby="votesNb-label">   ${a.votesNb}   </span>
-	    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-down"></i></a>
+					<div class="answer-list span10">
+						<div class="statscontainer">
+							<div class="vote">
+		    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
+		    					<span class="property-value" aria-labelledby="votesNb-label">   ${a.votesNb}   </span>
+		    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-down"></i></a>
+							</div>
 						</div>
-					</div>
-					<div class="span8" id="answers">
-						<div class="excerpt"> ${a.description} </div>
-							<div class="started fr">
-								<div class="user-info ">
-									<div class="user-action-time">
-										answered
-										<span class="relativetime" title="2013-03-04 13:58:32Z">${a.creationDate}</span>
+						<div class="span8" id="answers">
+							<div class="excerpt"> ${a.description} </div>
+								<div class="started fr">
+									<div class="user-info ">
+										<div class="user-action-time">
+											answered
+											<span class="relativetime" title="2013-03-04 13:58:32Z">${a.creationDate}</span>
+										</div>
+										<div class="user-gravatar32">
+											<a href="/users/138030/rakesh">
+													<img width="32" height="32" alt="" src="http://www.gravatar.com/avatar/7fd70fb599d55a9639e248231d1f81ba?s=32&d=identicon&r=PG">
+											</a>
+										</div>
+										<div class="user-details">
+											<g:link action="show" id="${a.user.id}" >	${a.user.toString()} </g:link>
+											
+											<br>
+											<span class="reputation-score" dir="ltr" title="reputation score">0</span>
+										</div>
 									</div>
-									<div class="user-gravatar32">
-										<a href="/users/138030/rakesh">
-												<img width="32" height="32" alt="" src="http://www.gravatar.com/avatar/7fd70fb599d55a9639e248231d1f81ba?s=32&d=identicon&r=PG">
-										</a>
-									</div>
-									<div class="user-details">
-										<g:link action="show" id="${a.user.id}" >	${a.user.toString()} </g:link>
-										
-										<br>
-										<span class="reputation-score" dir="ltr" title="reputation score">0</span>
-									</div>
-								</div>
-							</div>	
+								</div>	
+							</div>
 						</div>
 					</g:each>
-				</g:if>
+			</g:if>
+		</div>
+		
+		<div id="" class="span16">
+				
 				<div>
 					<sec:ifAllGranted roles="ROLE_USER">
 						<h3>Your answer</h3>	
