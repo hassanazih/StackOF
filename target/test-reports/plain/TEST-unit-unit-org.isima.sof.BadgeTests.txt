@@ -1,0 +1,10 @@
+Testsuite: org.isima.sof.BadgeTests
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2,324 sec
+------------- Standard Output ---------------
+--Output from testType--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testType--
+------------- ---------------- ---------------
+
+Testcase: testType took 1,618 sec

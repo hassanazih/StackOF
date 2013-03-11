@@ -39,7 +39,7 @@
 						<table>
 							<tbody>
 							<g:each in="${userInstanceList}" status="i" var="userInstance">
-								<g:if test="${i==6}">
+								<g:if test="${i==0 || i==6}">
 								<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 								</g:if>
 								
@@ -61,7 +61,7 @@
 									
 								</div>
 								</td>
-								<g:if test="${i==6}">
+								<g:if test="${i==0 || i==6}">
 								</tr>
 								</g:if>
 							</g:each>

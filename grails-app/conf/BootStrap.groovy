@@ -11,22 +11,26 @@ class BootStrap {
 	def springSecurityService
 	
     def init = { servletContext ->
-		//new User(name:"test",username:"test",password:"test").save(failOnError:true)
-		
+
+		/* Creating roles to assign privileges to users*/		
 		
 		def userRole = SecRole.findByAuthority("ROLE_USER")?:new SecRole(authority:"ROLE_USER").save(failOnError:true);
 		def adminRole = SecRole.findByAuthority("ROLE_ADMIN")?:new SecRole(authority:"ROLE_ADMIN").save(failOnError:true);
 		
+		
+		/* Creating two users, one normal and one admin*/
 		def user = new User(username : "admin",
 							password : "123456",
 							enabled : true	,
 							email: "hassanazih@gmail.com",
 							location: "Clermont-Ferrand, France")
 		
+		/* Validate user to save it safely*/
 		if(user.validate())
 		{
 			user.save(failOnError:true)
 			SecUserSecRole.create user, userRole
+			log.debug "User "+user.name+" created "
 		}
 		else
 		{
@@ -44,6 +48,8 @@ class BootStrap {
 		{
 			admin.save(failOnError:true)
 			SecUserSecRole.create admin, adminRole
+			log.debug "User "+admin.name+" created "
+			
 		}
 		else
 		{
@@ -53,7 +59,7 @@ class BootStrap {
 
 		
 		/*
-		 * Définition de quelques tags
+		 * Defining some tags
 		 */
 		
 		def tag01 = new Tag(name:"Java")
@@ -77,7 +83,7 @@ class BootStrap {
 		
 		
 		/*
-		 * Ajout de quelques questions 
+		 * Creating some questions
 		 */
 		def today = new Date()
 		
@@ -97,8 +103,8 @@ class BootStrap {
 		question03.save(failOnError:true)
 		question04.save(failOnError:true)
 		
-		
-		/* Ajout de quelques réponses */
+		question01.tags.size()
+		/* Some answers */
 		
 		
 		def answer01 = new Answer(user:user,description:"Reponse 1",creationDate:today,question:question01)

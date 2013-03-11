@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="MacBook-Pro-de-Moroccan.local" id="0" name="BadgeTests" package="org.isima.sof" tests="1" time="2.324" timestamp="2013-03-11T13:51:01">
+      <properties />
+
+      <testcase classname="org.isima.sof.BadgeTests" name="testType" time="1.618" />
+
+      <system-out><![CDATA[--Output from testType--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testType--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="5" hostname="MacBook-Pro-de-Moroccan.local" id="1" name="TagControllerTests" package="org.isima.sof" tests="8" time="5.692" timestamp="2013-03-11T13:51:03">
+      <properties />
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testIndex" time="2.63" />
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testList" time="1.057" />
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testCreate" time="0.116" />
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testSave" time="0.618">
+          <failure message="Assertion failed: &#xa;&#xa;assert response.redirectedUrl == &apos;/tag/show/6&apos;&#xa;       |        |             |&#xa;       |        null          false&#xa;       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@5c672bb3&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert response.redirectedUrl == &apos;/tag/show/6&apos;
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@5c672bb3
+
+	at org.isima.sof.TagControllerTests.testSave(TagControllerTests.groovy:48)
+</failure>
+
+      </testcase>
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testShow" time="0.643">
+          <failure message="Assertion failed: &#xa;&#xa;assert tag.save() != null&#xa;       |   |      |&#xa;       |   null   false&#xa;       org.isima.sof.Tag@3f2bc418 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3f2bc418 (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testShow(TagControllerTests.groovy:62)
+</failure>
+
+      </testcase>
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testEdit" time="0.222">
+          <failure message="Assertion failed: &#xa;&#xa;assert tag.save() != null&#xa;       |   |      |&#xa;       |   null   false&#xa;       org.isima.sof.Tag@3b96c67a (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3b96c67a (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testEdit(TagControllerTests.groovy:80)
+</failure>
+
+      </testcase>
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testUpdate" time="0.252">
+          <failure message="Assertion failed: &#xa;&#xa;assert tag.save() != null&#xa;       |   |      |&#xa;       |   null   false&#xa;       org.isima.sof.Tag@13e5d15 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@13e5d15 (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testUpdate(TagControllerTests.groovy:100)
+</failure>
+
+      </testcase>
+
+      <testcase classname="org.isima.sof.TagControllerTests" name="testDelete" time="0.112">
+          <failure message="Assertion failed: &#xa;&#xa;assert tag.save() != null&#xa;       |   |      |&#xa;       |   null   false&#xa;       org.isima.sof.Tag@43bacc7d (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@43bacc7d (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testDelete(TagControllerTests.groovy:144)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testIndex--
+--Output from testList--
+--Output from testCreate--
+--Output from testSave--
+--Output from testShow--
+--Output from testEdit--
+--Output from testUpdate--
+--Output from testDelete--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testIndex--
+--Output from testList--
+--Output from testCreate--
+--Output from testSave--
+--Output from testShow--
+--Output from testEdit--
+--Output from testUpdate--
+--Output from testDelete--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

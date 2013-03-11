@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="MacBook-Pro-de-Moroccan.local" name="org.isima.sof.BadgeTests" tests="1" time="2.324" timestamp="2013-03-11T13:51:01">
+  <properties />
+  <testcase classname="org.isima.sof.BadgeTests" name="testType" time="1.618" />
+  <system-out><![CDATA[--Output from testType--
+]]></system-out>
+  <system-err><![CDATA[--Output from testType--
+]]></system-err>
+</testsuite>

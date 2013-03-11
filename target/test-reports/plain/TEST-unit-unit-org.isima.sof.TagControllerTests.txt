@@ -1,0 +1,116 @@
+Testsuite: org.isima.sof.TagControllerTests
+Tests run: 8, Failures: 5, Errors: 0, Time elapsed: 5,692 sec
+------------- Standard Output ---------------
+--Output from testIndex--
+--Output from testList--
+--Output from testCreate--
+--Output from testSave--
+--Output from testShow--
+--Output from testEdit--
+--Output from testUpdate--
+--Output from testDelete--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testIndex--
+--Output from testList--
+--Output from testCreate--
+--Output from testSave--
+--Output from testShow--
+--Output from testEdit--
+--Output from testUpdate--
+--Output from testDelete--
+------------- ---------------- ---------------
+
+Testcase: testIndex took 2,631 sec
+Testcase: testList took 1,057 sec
+Testcase: testCreate took 0,116 sec
+Testcase: testSave took 0,618 sec
+	FAILED
+Assertion failed: 
+
+assert response.redirectedUrl == '/tag/show/6'
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@5c672bb3
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert response.redirectedUrl == '/tag/show/6'
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@5c672bb3
+
+	at org.isima.sof.TagControllerTests.testSave(TagControllerTests.groovy:48)
+
+Testcase: testShow took 0,642 sec
+	FAILED
+Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3f2bc418 (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3f2bc418 (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testShow(TagControllerTests.groovy:62)
+
+Testcase: testEdit took 0,221 sec
+	FAILED
+Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3b96c67a (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@3b96c67a (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testEdit(TagControllerTests.groovy:80)
+
+Testcase: testUpdate took 0,252 sec
+	FAILED
+Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@13e5d15 (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@13e5d15 (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testUpdate(TagControllerTests.groovy:100)
+
+Testcase: testDelete took 0,112 sec
+	FAILED
+Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@43bacc7d (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert tag.save() != null
+       |   |      |
+       |   null   false
+       org.isima.sof.Tag@43bacc7d (toString() == null)
+
+	at org.isima.sof.TagControllerTests.testDelete(TagControllerTests.groovy:144)
+

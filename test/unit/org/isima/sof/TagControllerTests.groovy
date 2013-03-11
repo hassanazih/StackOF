@@ -11,8 +11,7 @@ class TagControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        
     }
 
     void testIndex() {
@@ -45,7 +44,7 @@ class TagControllerTests {
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/tag/show/1'
+        assert response.redirectedUrl == '/tag/show/6'
         assert controller.flash.message != null
         assert Tag.count() == 1
     }
@@ -151,5 +150,7 @@ class TagControllerTests {
         assert Tag.count() == 0
         assert Tag.get(tag.id) == null
         assert response.redirectedUrl == '/tag/list'
+		
+	
     }
 }
