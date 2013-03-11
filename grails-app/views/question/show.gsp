@@ -99,7 +99,7 @@
 				
 				<sec:ifAllGranted roles="ROLE_USER">
 					<h3>Your answer</h3>	
-					<g:form action="save" >
+					<g:form url="[action:'save',controller:'answer']" >
 						<fieldset class="form">
 							<g:render template="/answer/form"/>
 						</fieldset>

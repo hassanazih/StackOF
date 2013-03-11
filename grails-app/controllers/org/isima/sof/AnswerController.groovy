@@ -1,5 +1,6 @@
 package org.isima.sof
 import grails.plugins.springsecurity.Secured;
+import grails.plugins.springsecurity.SpringSecurityService
 
 
 import org.springframework.dao.DataIntegrityViolationException
@@ -7,7 +8,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class AnswerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	SpringSecurityService springSecurityService 
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -24,14 +26,15 @@ class AnswerController {
 	
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
-        def answerInstance = new Answer(params)
+		def question = Question.get((params.question.id) as Integer)
+        def answerInstance = new Answer(description: params.description, question:question, user: springSecurityService.currentUser  )
         if (!answerInstance.save(flush: true)) {
             render(view: "create", model: [answerInstance: answerInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'answer.label', default: 'Answer'), answerInstance.id])
-        redirect(action: "show", id: answerInstance.id)
+        redirect(controller: "question", action: "show", id: question.id)
     }
 
     def show(Long id) {

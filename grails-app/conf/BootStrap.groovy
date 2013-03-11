@@ -97,9 +97,8 @@ class BootStrap {
 		/* Ajout de quelques réponses */
 		
 		
-		def answer01 = new Answer(user:user,description:"Réponse 1",creationDate:today,question:question01)
-		def answer02 = new Answer(user:user,description:"Réponse 2",creationDate:today,question:question01)
-		def answer03 = new Answer(user:user,description:"Réponse 3",creationDate:today,question:question01)
+		def answer01 = new Answer(user:user,description:"Réponse 1",creationDate:today,question:question01.id)
+		def answer02 = new Answer(user:user,description:"Réponse 2",creationDate:today,question:question01.id)
 		
 		
 		
