@@ -109,7 +109,34 @@
 									</div>
 								</div>	
 							</div>
+						
+						<div class="comments span4">
+						
+							<g:if test="${a.comments}">
+								<g:each in="${a.comments}" var="c">
+								<span aria-labelledby="comments-label">
+									${c?.encodeAsHTML()} - 
+									<g:link controller="user" action="show" id="${c.user.id}" >${c.user.toString()}</g:link>
+									${c.creationDate}
+								</span>
+								<br>
+								</g:each>
+							</g:if>
+							<sec:ifAllGranted roles="ROLE_USER">
+								<div class="comment-link">
+									<g:form url="[action:'save',controller:'comment']" style="" >
+										<fieldset class="form">
+											<g:hiddenField name="answer.id" value="${a.id}" />
+											<g:render template="/comment/form"/>
+										</fieldset>
+										<fieldset class="buttons">
+											<g:submitButton name="create" class="btn btn-mini" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+										</fieldset>
+									</g:form>
+								</div>
+							</sec:ifAllGranted>
 						</div>
+					</div>
 					</g:each>
 			</g:if>
 		</div>

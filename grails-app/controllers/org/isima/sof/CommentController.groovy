@@ -26,11 +26,12 @@ class CommentController {
 	
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
-		def question = Question.get((params.question.id) as Integer)
+		def question,id = Question.get((params.question.id) as Integer)
 		def answer
-		if (params.answer !=null) 
+		if (params.answer !=null){ 
 			answer = Answer.get((params.answer.id) as Integer)
-		else
+			question = null
+		}else
 			answer = null
 		
 		def commentInstance = new Comment(user: springSecurityService.currentUser, creationDate: new Date(), description: params.comment.description, answer:answer, question:question )
@@ -40,8 +41,8 @@ class CommentController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
-		redirect(controller:"question", action: "show", id: question.id)
+        //flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
+		redirect(controller:"question", action: "show", id: id.id)
     }
 
     def show(Long id) {
