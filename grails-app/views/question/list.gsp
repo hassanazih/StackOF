@@ -14,15 +14,17 @@
 			    <ul id="ulTabView">
 			    
 					<li>
-						<a href="#tabs-1" onClick="refresh('tabs-1', 'newestQuestions');">newest</a>
+						<a href="#tabs-1" onClick="refresh('tabs-1', 'newestQuestions');">
+						${message(code: 'newest.label', default: 'Newest')}
+						</a>
 					</li>
 				
 					<li onClick="refresh('tabs-2', 'viewedQuestions');">
-						<a href="#tabs-2">most viewed</a>
+						<a href="#tabs-2">${message(code: 'mostviewed.label', default: 'Most Viewed')}</a>
 					</li>
 				
 					<li onClick="refresh('tabs-3', 'votedQuestions');">
-						<a href="#tabs-3">most voted</a>
+						<a href="#tabs-3">${message(code: 'mostvoted.label', default: 'Most Voted')}</a>
 					</li>
 				
 				</ul>

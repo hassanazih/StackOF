@@ -118,18 +118,20 @@
           <div class="nav-collapse collapse">
 			<sec:ifLoggedIn>
             <p class="navbar-text pull-right">
-				<sec:username/> (<g:link controller="logout"> logout </g:link>)
+				<sec:username/> (<g:link controller="logout"> ${message(code: 'logout.label', default: 'Logout')} </g:link>)
             </p>
             </sec:ifLoggedIn>
             <ul class="nav">
-              <li><a href="/SOF/">Home</a></li>
-              <li><a href="#">About</a></li>
-              <sec:ifNotLoggedIn>
-              <li><%= link(action:'index',controller:'login') { 'Log in' }%></li>
-              <li><%= link(action:'create',controller:'user') { 'Register' }%></li>
-              </sec:ifNotLoggedIn>
-              <li><a href="#contact">Contact</a></li>
-              
+              	<li><a href="/SOF/">${message(code: 'home.label', default: 'No message')}</a></li>
+              	<li><a href="#">${message(code: 'about.label', default: 'About')}</a></li>
+              	<sec:ifNotLoggedIn>
+              		<li><g:link action="index" controller="login" > ${message(code: 'login.label', default: 'Log in')} </g:link></li>
+              		<li><g:link action="create" controller="user" > ${message(code: 'register.label', default: 'Register')} </g:link></li>
+              	</sec:ifNotLoggedIn>
+              	<li><a href="#contact">${message(code: 'contact.label', default: 'Contact')}</a></li>
+              	<li class="navbar-text pull-right">
+					<langs:selector langs="en_US, fr_FR" default="es" url="${createLink(action:'list', controller:'question', params:[paramun:123]) }"/>
+				</li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -139,26 +141,19 @@
 		<div class="span5 offset1">
 			<ul>
 	
-				<li><g:link controller="question" action="list"><g:message code="Questions" /></g:link></li>
-				<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
-				<li><g:link controller="user" action="list"><g:message code="User" /></g:link></li>
-				<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
-				<li id="ask"><g:link controller="question" action="create"><g:message code="ask.question"  /></g:link></li>
+				<li><g:link controller="question" action="list"><g:message code="${message(code: 'questions.label', default: 'Questions')}" /></g:link></li>
+				<li><g:link controller="tag" action="list"><g:message code="${message(code: 'tags.label', default: 'Tags')}" /></g:link></li>
+				<li><g:link controller="user" action="list"><g:message code="${message(code: 'users.label', default: 'Users')}" /></g:link></li>
+				<li><g:link controller="badge" action="list"><g:message code="${message(code: 'badges.label', default: 'Badges')}" /></g:link></li>
+				<li id="ask"><g:link controller="question" action="create"><g:message code="${message(code: 'askquestion.label', default: 'Ask Question')}"  /></g:link></li>
 				
-				<!--  <sec:ifAllGranted roles="ROLE_USER">		
-					<li><g:link controller="tag" action="list"><g:message code="Tag" /></g:link></li>
-					<li><g:link controller="user" action="list"><g:message code="User" /></g:link></li>
-					<li><g:link controller="badge" action="list"><g:message code="Badge" /></g:link></li>
-				</sec:ifAllGranted>-->		
 			</ul>
 		</div>
 	</div>
 	
     <div class=" container-fluid">
-		<!-- <div class="span9">-->
      		<g:layoutBody />
-		<!--  </div>-->
-    </div><!--/.fluid-container-->
+    </div>
     
     
         <!-- Footer

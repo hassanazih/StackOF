@@ -1,4 +1,7 @@
 
+
+
+
 <%@ page import="org.isima.sof.User" %>
 <!DOCTYPE html>
 <html>
@@ -28,63 +31,55 @@
 
 			<richui:tabContents>
 				<richui:tabContent>
-
 					<div id="list-user" class="content scaffold-list" role="main">
 						<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 						<g:if test="${flash.message}">
 						<div class="message" role="status">${flash.message}</div>
 						</g:if>
+						<div id="user-browser">
 						<table>
-							<thead>
-								<tr>
-								
-									<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
-								
-									<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
-								
-									<g:sortableColumn property="profileViews" title="${message(code: 'user.profileViews.label', default: 'Profile Views')}" />
-								
-									<g:sortableColumn property="website" title="${message(code: 'user.website.label', default: 'Website')}" />
-								
-									<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
-								
-									<g:sortableColumn property="admin" title="${message(code: 'user.admin.label', default: 'Admin')}" />
-								
-								</tr>
-							</thead>
 							<tbody>
 							<g:each in="${userInstanceList}" status="i" var="userInstance">
+								<g:if test="${i==6}">
 								<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+								</g:if>
 								
-									<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
 								
-									<td>${fieldValue(bean: userInstance, field: "password")}</td>
-								
-									<td>${fieldValue(bean: userInstance, field: "profileViews")}</td>
-								
-									<td>${fieldValue(bean: userInstance, field: "website")}</td>
-								
-									<td>${fieldValue(bean: userInstance, field: "email")}</td>
-								
-									<td><g:formatBoolean boolean="${userInstance.admin}" /></td>
-								
+								<td>
+								<div class="user-info">
+									<div class="user-gravatar48">
+											<div class="gravatar-wrapper-48">
+												<img alt="" src="http://i.stack.imgur.com/FQYB3.jpg?s=48&g=1">
+											</div>
+									</div>
+									<div class="user-details">
+											<g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link>
+											<br>
+											<span class="user-location">${fieldValue(bean: userInstance, field: "location")}</span>
+											<br>
+											<span class="reputation-score" dir="ltr" title="">2,585</span>
+									</div>
+									
+								</div>
+								</td>
+								<g:if test="${i==6}">
 								</tr>
+								</g:if>
 							</g:each>
 							</tbody>
 						</table>
-					</div>
+						</div>
+						<div class="pagination">
+							<g:paginate total="${userInstanceTotal}" />
+						</div>
 				</richui:tabContent>
 				<richui:tabContent> 
-					<p>new users</p> 
 				</richui:tabContent>
 				<richui:tabContent> 
-					<p>voters</p> 
 				</richui:tabContent>
 				<richui:tabContent> 
-					<p>editors</p> 
 				</richui:tabContent>
 				<richui:tabContent> 
-					<p>moderators</p> 
 				</richui:tabContent>
 			</richui:tabContents> 
 		</richui:tabView>
