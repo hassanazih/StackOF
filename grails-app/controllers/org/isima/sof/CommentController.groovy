@@ -26,7 +26,8 @@ class CommentController {
 	
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
-		def question,id = Question.get((params.question.id) as Integer)
+		def question = Question.get((params.question.id) as Integer)
+		def id = question
 		def answer
 		if (params.answer !=null){ 
 			answer = Answer.get((params.answer.id) as Integer)
