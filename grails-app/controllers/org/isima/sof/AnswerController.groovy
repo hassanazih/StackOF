@@ -110,4 +110,22 @@ class AnswerController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def vote(Long id){
+		def answerInstance = Answer.get(id)
+		if (params.plus == "true")
+			answerInstance.votesNb++
+		else
+			answerInstance.votesNb--
+			
+		if (!answerInstance.save(flush: true)) {
+			flash.message = message(code: 'default.error', args: [message(code: 'answer.label', default: 'Answer'), answerInstance.id])
+			return
+		}
+
+		
+		redirect(controller: "question", action: "show", id: params.questionID)
+	
+	}
+	
 }

@@ -15,9 +15,9 @@
 			</g:if>
 			<div class="statscontainer">
 				<div class="vote">
-	    			<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
+	    			<g:link action="vote" id="${questionInstance.id}" params="[plus:'true']"><i class=" icon-chevron-up"></i></g:link>
 	    			<span class="property-value" aria-labelledby="votesNb-label"><g:fieldValue bean="${questionInstance}" field="votesNb"/></span>
-	    			<a class="vote-down-off" title="-1"><i class=" icon-chevron-down"></i></a>
+	    			<g:link action="vote" id="${questionInstance.id}" params="[plus:'false']"><i class=" icon-chevron-down"></i></g:link>
 				</div>
 			</div>
 			<div class="span8">
@@ -82,9 +82,9 @@
 					<div class="answer-list span10">
 						<div class="statscontainer">
 							<div class="vote">
-		    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-up"></i></a>
+		    					<g:link controller="answer" action="vote" id="${a.id}" params="[plus:'true', questionID:questionInstance.id]"><i class=" icon-chevron-up"></i></g:link>
 		    					<span class="property-value" aria-labelledby="votesNb-label">   ${a.votesNb}   </span>
-		    					<a class="vote-up-off" title="+1"><i class=" icon-chevron-down"></i></a>
+		    					<g:link controller="answer" action="vote" id="${a.id}" params="[plus:'false', questionID:questionInstance.id]"><i class=" icon-chevron-down"></i></g:link>
 							</div>
 						</div>
 						<div class="span8" id="answers">

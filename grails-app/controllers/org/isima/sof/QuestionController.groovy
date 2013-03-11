@@ -139,6 +139,24 @@ class QuestionController {
         }
     }
 	
+
+	def vote(Long id){
+		def questionInstance = Question.get(id)
+		if (params.plus == "true")
+			questionInstance.votesNb++
+		else
+			questionInstance.votesNb--
+			
+		if (!questionInstance.save(flush: true)) {
+			flash.message = message(code: 'default.error', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
+			return
+		}
+
+		
+		redirect(action: "show", id: questionInstance.id)
+	
+	}
+	
 	def _newestQuestions(){
 		def myMap = ["sort":"creationDate", "order":"desc"]
 		[questionInstanceList: Question.list(myMap), questionInstanceTotal: Question.count(), tagInstanceList: Tag.list(max:10), tagInstanceTotal: Tag.count()]
