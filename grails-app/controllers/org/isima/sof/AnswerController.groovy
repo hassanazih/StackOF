@@ -27,14 +27,14 @@ class AnswerController {
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
 		def question = Question.get((params.question.id) as Integer)
-        def answerInstance = new Answer(description: params.description, question:question, user: springSecurityService.currentUser  )
+        def answerInstance = new Answer(description: params.description, question:question, user: springSecurityService.currentUser, creationDate: new Date()  )
         if (!answerInstance.save(flush: true)) {
             render(view: "create", model: [answerInstance: answerInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'answer.label', default: 'Answer'), answerInstance.id])
-        redirect(controller: "question", action: "show", id: question.id)
+        redirect(controller:"question", action: "show", id: question.id)
     }
 
     def show(Long id) {

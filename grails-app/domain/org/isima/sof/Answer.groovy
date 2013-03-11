@@ -2,7 +2,7 @@ package org.isima.sof
 
 class Answer {
 
-	Date creationDate=new Date();
+	Date creationDate
 	String description;
 	int votesNb=0;
 	
