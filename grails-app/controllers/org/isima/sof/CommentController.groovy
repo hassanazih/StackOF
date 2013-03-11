@@ -1,15 +1,14 @@
 package org.isima.sof
 import grails.plugins.springsecurity.Secured;
-
-
-import org.springframework.dao.DataIntegrityViolationException
-
+import grails.plugins.springsecurity.SpringSecurityService;
 
 import org.springframework.dao.DataIntegrityViolationException
+
 
 class CommentController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	SpringSecurityService springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
@@ -27,14 +26,22 @@ class CommentController {
 	
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
-        def commentInstance = new Comment(params)
-        if (!commentInstance.save(flush: true)) {
+		def question = Question.get((params.question.id) as Integer)
+		def answer
+		if (params.answer !=null) 
+			answer = Answer.get((params.answer.id) as Integer)
+		else
+			answer = null
+		
+		def commentInstance = new Comment(user: springSecurityService.currentUser, creationDate: new Date(), description: params.comment.description, answer:answer, question:question )
+        
+		if (!commentInstance.save(flush: true)) {
             render(view: "create", model: [commentInstance: commentInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
-        redirect(action: "show", id: commentInstance.id)
+		redirect(controller:"question", action: "show", id: question.id)
     }
 
     def show(Long id) {

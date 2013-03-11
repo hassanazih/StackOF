@@ -27,7 +27,8 @@ class AnswerController {
 	@Secured(['ROLE_USER','IS_AUTHENTICATED_FULLY'])
     def save() {
 		def question = Question.get((params.question.id) as Integer)
-        def answerInstance = new Answer(user: springSecurityService.currentUser, creationDate: new Date(), description: params.description, question:question )
+		def answerInstance = new Answer(user: springSecurityService.currentUser, creationDate: new Date(), description: params.answer.description, question:question )
+
         if (!answerInstance.save(flush: true)) {
             render(view: "create", model: [answerInstance: answerInstance])
             return
